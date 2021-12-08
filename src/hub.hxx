@@ -24,7 +24,6 @@ struct Hub {
   private:
     Hub() {}
     std::vector<std::weak_ptr<Iobase>> sinks;
-    bool shutting_down_ = false;
     unsigned int disconnect_not_now = 0;
 };
 

@@ -30,6 +30,7 @@ struct Tty : public Iobase, std::enable_shared_from_this<Tty> {
 
     struct Action {
         virtual void exec(TtyPtr tty, IoPtr dut) = 0;
+        virtual ~Action() {}
     };
 
     struct ActionQuit : public Action {

@@ -109,7 +109,7 @@ void Process::handle_read_out(const boost::system::error_code& error,
     // Hack... But we need a way to send a break signal - now it is <F12>
     if (s == std::string("\x1b[24~"))
         dut_->send_break();
-    else if (s.size() < 2 && s[0] == 0xff && s[1] == 0xf3) // telnet break
+    else if (s.size() < 2 && (unsigned char)s[0] == 0xff && (unsigned char)s[1] == 0xf3) // telnet break
         dut_->send_break();
     else
         dut_->inject(s);

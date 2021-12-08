@@ -1,5 +1,8 @@
-cmake_minimum_required (VERSION 2.6)
+
+cmake_minimum_required (VERSION 3.0)
 project (termhub)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 string (REPLACE " -" ";-" CXX_FLAGS        "${CMAKE_CXX_FLAGS}")
 LIST(APPEND CXX_FLAGS "-std=c++14")
@@ -13,15 +16,14 @@ SET(Boost_USE_STATIC_LIBS ON)
 #enable_testing()
 
 find_package(Boost COMPONENTS thread program_options system REQUIRED)
+include_directories(boost_process)
 include_directories(${Boost_INCLUDE_DIRS})
-include_directories(3pp/boost_process)
 
 find_package(Threads REQUIRED)
 find_package(Curses REQUIRED)
 
 include_directories(src)
 add_subdirectory(key-tokenizer)
-include_directories(boost_process)
 
 include_directories(key-tokenizer/include)
 

@@ -48,7 +48,6 @@ void Rs232Client::handle_read(const boost::system::error_code &error,
     if (shutting_down_) return;
 
     if (error) {
-        boost::system::error_code e;
         LOG("Error: " << error.message());
         reconnect_timeout();
         return;
